@@ -26,7 +26,7 @@ Since the data is organized into 12 different worksheets, one for each month, I 
 Steps taken for data cleaning
 
 1) Identified the source of error in ride\_length column which turned out to be negative time values that gave !VALUE error. I rectified the problem by using the MOD() function.
-1) ` `Formatted the date and time correctly
+1) Formatted the date and time correctly
 1) Removed extra spaces using the TRIM() function
 1) No duplicates were found using the DISTINCT() function
 1) No mismatched data was found 
@@ -39,11 +39,11 @@ I renamed the column 'member-casual' to 'rider\_type' to specify the two rider t
 
 Additionally, I created 3 columns as follows:
 
-\1) start\_day\_number: By using WEEKDAY() function on the date column
+1) start\_day\_number: By using WEEKDAY() function on the date column
 
-\2) start\_day: By using TEXT() function on the start\_day\_number column
+2) start\_day: By using TEXT() function on the start\_day\_number column
 
-\3) ride\_length: By subtracting start\_time from end\_time under the MOD() function
+3) ride\_length: By subtracting start\_time from end\_time under the MOD() function
 
 After performing the above mentioned steps I uploaded the 12 CSVs on the Microsoft SQL Server Management Studio and combined them using UNION ALL function in Transact-SQL.
 
@@ -60,8 +60,12 @@ This part of the analysis aims at discovering any surprises, trends, or relation
 Grand totals of the respective pivot tables gave an idea about the total numbers over each month which was then pulled into a common pivot table for a yearly overview.
 ## **Sharing The Analysis**
 ### Ride Count
-## [**https://public.tableau.com/views/RideCountDistribution/RideCount?:language=en-GB&:display_count=n&:origin=viz_share_link**](https://public.tableau.com/views/RideCountDistribution/RideCount?:language=en-GB&:display_count=n&:origin=viz_share_link)
+## [**click to check original resourse**](https://public.tableau.com/views/RideCountDistribution/RideCount?:language=en-GB&:display_count=n&:origin=viz_share_link)
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/998f3958-519f-4e56-8ad4-510be98f9fe6)
+
 Total bikes leased in the year 2022 were 5.66M out of which 3.34M were leased by member riders and 2.32M by casual riders. Member rides and casual rides constitute 59.03% and 40.97% of the total respectively. The fact that the number of casual riders is significant supports the idea of converting casual riders to member riders instead of focusing on adding new member riders.
+
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/3f5b99af-fff9-42ae-a523-6c10777d17af)
 
 <https://public.tableau.com/views/RideCountDistribution/RideCountDistribution?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
@@ -83,12 +87,15 @@ The average ride length for member riders is comparable between march-september 
 
 The average ride length for casual riders is higher than member riders throughtout the year. Also, it is observed that both casual and member riders ride for the longest periods on sundays.
 ### Ride Preference
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/bcac1ab4-c56c-4e30-872c-5d79c40ae899)
+
 <https://public.tableau.com/views/RidePreferenceCyclisticBikeShareAnalysis2022/RidePreferenceTotal?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
 Both casual and member riders prefer classic bikes as well as electric bikes more than other bike types with docked bikes being the least preferred. Interestingly, docked bikes are almost used negligibly by casual riders. The difference in classic bike usage of member and casual riders is considerable and that of electric bike usage is almost comparable.
 
 Casual Ride Preference
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/d202412c-bc27-4da9-ae71-f09759d5403f)
 <https://public.tableau.com/views/CasualRidePreference/CasualRidePreference?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
 Classic bike usage for casual riders starts increasing from february with the highest rise between may and june, and it peaks in the month of june. After that it starts declining with the largest drop between october and november
@@ -99,6 +106,7 @@ On comparison, classic and electric bike usage is similar in the month of januar
 
 Member Ride Preference
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/11b72136-9415-490d-9192-711ba724a7ca)
 <https://public.tableau.com/views/MemberRidePreference/MemberRidePreference?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
 Classic bike usage for member riders starts increasing from february with the highest rise between March and April, and it peaks in the month of June. After that it starts declining with the largest drop between October and November. Classic bikes leased by member riders is comparable between July-September.
@@ -107,38 +115,48 @@ Electric bike usage for member riders starts increasing from february with the h
 
 Member riders have also preferred classic bikes. throughout the year except for November and December. During these months electric bikes are more preferred reason being the same. Usage of all bike types by both riders is the lowest in the month of January and February which are the coldest in Chicago.
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/bf71602b-81b5-4d47-ad81-cc5c410737f2)
 <https://public.tableau.com/views/MemberRidePreference/BikeType?:language=en-US&:display_count=n&:origin=viz_share_link>
 
 Upon monthly comparison, it is observed that classic and electric bikes are used by casual riders more than member riders throughout the year. Casual electric rides exceeded member electric rides between May-September.
 
 For member riders, classic bike usage is evenly distributed between Tuesday-Saturday and electric bike usage is maximum on Friday. Both classic and electric bikes are used lowest on Sunday and Monday. For casual riders, every bike type is used maximum on Saturday.
 ### Casual: Weekdays Peak Hours
+
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/854ded2d-0cd3-44cb-9d94-3f21ae28411a)
 <https://public.tableau.com/views/weekdayspeakhoursofstarttime/WeekdaysStartTime2?:language=en-US&:display_count=n&:origin=viz_share_link>
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/f2f54bd6-5c80-45ed-bf62-bb7695ffd83e)
 <https://public.tableau.com/views/weedaysendtimepeakhourscasual/WeekdaysEndTime?:language=en-US&:display_count=n&:origin=viz_share_link>
 
 Casual riders seem to be hiring maximum number of bikes in the evening between 4:00 P.M. - 7:00 P.M. during weekdays probably for leisure activities after office hours.
 
 Member: Weekday Peak hours
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/5ac90866-b175-4e9f-b478-3ca356236abf)
 <https://public.tableau.com/views/weekdaypeakhoursofstarttime/WeekdaysStartTime?:language=en-US&:display_count=n&:origin=viz_share_link>
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/f8fc8a70-c723-4a37-b856-a98ca3d116b9)
 <https://public.tableau.com/views/weekdayspeakhoursofendtimemember/WeekdaysEndTime2?:language=en-US&:display_count=n&:origin=viz_share_link>
 
 Member riders are hiring maximum number of bikes during peak commute hours that is between 7:00 A.M. - 9:00 A.M. in the morning and between 4:00 P.M. - 6:00 P.M. in the evening. Also, member riders seem to be using the bikes to travel towards station since some of the peak cyclistic docking stations are near train stations.
 
 Casual: Weekends Peak Hours
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/7578a426-df61-4dc9-81e5-650d2de4dd5f)
 <https://public.tableau.com/views/weekendstarttimepeakhoursofcasual/WeekendStartTime2?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/ebb7df95-fd89-49f7-8911-b59f0e336086)
 <https://public.tableau.com/views/weekendendtimepeakhourscasual/WeekendEndTime?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
 During weekends, casual riders hire maximum number of bikes between 12:00 P.M. - 5:00 P.M. The trend for weekends is a normal distribution unlike weekdays which was spiked during peak commute hours.
 
 Member: Weekends Peak Hours
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/b20e635c-7c7a-462d-a9ee-7b473688e15b)
 <https://public.tableau.com/views/weekendstarttimepeakhours/WeekendStartTime?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/41605453-b16e-41eb-b780-8b566c6337ea)
 <https://public.tableau.com/views/weekendendtimemember/WeekendEndTimemember?:language=en-GB&:display_count=n&:origin=viz_share_link>
 
 Bike hiring trend for member riders on weekends is comparable to that of casual riders, however a bit more consistent between 12:00 P.M. - 3:00 P.M. It seems that both riders types hire bikes for leisure and fun purposes during weekends.
