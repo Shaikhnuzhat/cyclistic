@@ -36,15 +36,15 @@ Steps taken for data cleaning
 ## **Data Transformation**
 Next, I seperated the date and time into individual columns using the text to column wizard and formatted accordingly.
 
-I renamed the column 'member-casual' to 'rider\_type' to specify the two rider types.
+I renamed the column 'member-casual' to 'rider_type' to specify the two rider types.
 
 Additionally, I created 3 columns as follows:
 ```
-1) start\_day\_number: By using WEEKDAY() function on the date column
+1) start_day_number: By using WEEKDAY() function on the date column
 
-2) start\_day: By using TEXT() function on the start\_day\_number column
+2) start_day: By using TEXT() function on the start_day_number column
 
-3) ride\_length: By subtracting start\_time from end\_time under the MOD() function
+3) ride_length: By subtracting start_time from end_time under the MOD() function
 ```
 
 After performing the above mentioned steps I uploaded the 12 CSVs on the Microsoft SQL Server Management Studio and combined them using UNION ALL function in Transact-SQL.
