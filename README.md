@@ -25,7 +25,7 @@ Since the data is organized into 12 different worksheets, one for each month, I 
 
 Steps taken for data cleaning
 ```
-1) Identified the source of error in ride\_length column which turned out to be negative time values that gave !VALUE error. I rectified the problem by using the MOD() function.
+1) Identified the source of error in ride_length column which turned out to be negative time values that gave !VALUE error. I rectified the problem by using the MOD() function.
 2) Formatted the date and time correctly
 3) Removed extra spaces using the TRIM() function
 4) No duplicates were found using the DISTINCT() function
