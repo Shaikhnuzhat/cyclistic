@@ -24,13 +24,14 @@ The attributes provided were sufficient but not complete. It could have containe
 Since the data is organized into 12 different worksheets, one for each month, I decided to use Microsoft Excel for monthly analysis and SQL for yearly analysis by using a union. Total number of records for the year 2022 turned out to be 5.6M which is out of scope of Microsoft Excel. For visualizing yearly statistics I used Tableau.
 
 Steps taken for data cleaning
-
+```
 1) Identified the source of error in ride\_length column which turned out to be negative time values that gave !VALUE error. I rectified the problem by using the MOD() function.
-1) Formatted the date and time correctly
-1) Removed extra spaces using the TRIM() function
-1) No duplicates were found using the DISTINCT() function
-1) No mismatched data was found 
-1) Data aligned perfectly with the business logic
+2) Formatted the date and time correctly
+3) Removed extra spaces using the TRIM() function
+4) No duplicates were found using the DISTINCT() function
+5) No mismatched data was found 
+6) Data aligned perfectly with the business logic
+```
 
 ## **Data Transformation**
 Next, I seperated the date and time into individual columns using the text to column wizard and formatted accordingly.
@@ -38,12 +39,13 @@ Next, I seperated the date and time into individual columns using the text to co
 I renamed the column 'member-casual' to 'rider\_type' to specify the two rider types.
 
 Additionally, I created 3 columns as follows:
-
+```
 1) start\_day\_number: By using WEEKDAY() function on the date column
 
 2) start\_day: By using TEXT() function on the start\_day\_number column
 
 3) ride\_length: By subtracting start\_time from end\_time under the MOD() function
+```
 
 After performing the above mentioned steps I uploaded the 12 CSVs on the Microsoft SQL Server Management Studio and combined them using UNION ALL function in Transact-SQL.
 
@@ -53,9 +55,11 @@ After cleaning and tranforming the data into a proper format it was ready for an
 ## **Analyzing The Data**
 This part of the analysis aims at discovering any surprises, trends, or relationships, and as such, I created 3 pivot tables in each of the 12 CSVs to find out how the usage of annual member riders differ from that of the casual riders **over a week**.
 
+```
 1. First table calculates the number of bikes leased by each rider type. The goal was to find out whether casual riders preferred certain days as compared to the member riders.
-1. Second table calculates the average length of ride by each rider type. The goal here was to compare which rider type leased the bikes for longer periods on what days.
-1. Third pivot table was created to determine whether casual or member riders preferred a certain bike type over others on certain days.
+2. Second table calculates the average length of ride by each rider type. The goal here was to compare which rider type leased the bikes for longer periods on what days.
+3. Third pivot table was created to determine whether casual or member riders preferred a certain bike type over others on certain days.
+```
 
 Grand totals of the respective pivot tables gave an idea about the total numbers over each month which was then pulled into a common pivot table for a yearly overview.
 ## **Sharing The Analysis**
@@ -75,11 +79,12 @@ For member riders, the number of bikes leased starts increasing from the month o
 
 It is observed that the number of rides leased by casual riders surpasses member riders in the months of june, july, and august. The reason I suspect is the increase in tourism in Chicago during this period. Also, the lowest number of rides are in the month of january for both casual and member riders, the reason might be freezing weather conditions. After carefully observing the monthly data, I found out that casual riders hire maximum number of bikes on weekends and member riders on weekdays in each month consistently. From the data it seems that member riders use the bikes for commute purposes which could be office/school/college.
 ### Ride Length
-Pic ayega excel wala chart
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/b439acce-f8b3-4ca8-aa58-6ed78179e21e)
 
 On average, casual riders spend approximately twice as much time on their bikes as compared to member riders, even though the number of rides leased by casual riders is 10% less than member riders.
 
-Pic ayega chart no 2 excel ki
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/749b0dae-d6cc-4930-8ebb-37ce3d730984)
+
 
 The average ride length for casual riders is comparable between february-may and starts declining further until january. It is observed that there is a significant increase in the average ride length for casual riders between january and february.
 
@@ -93,7 +98,7 @@ The average ride length for casual riders is higher than member riders throughto
 
 Both casual and member riders prefer classic bikes as well as electric bikes more than other bike types with docked bikes being the least preferred. Interestingly, docked bikes are almost used negligibly by casual riders. The difference in classic bike usage of member and casual riders is considerable and that of electric bike usage is almost comparable.
 
-Casual Ride Preference
+### Casual Ride Preference
 
 ![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/d202412c-bc27-4da9-ae71-f09759d5403f)
 <https://public.tableau.com/views/CasualRidePreference/CasualRidePreference?:language=en-GB&:display_count=n&:origin=viz_share_link>
@@ -104,7 +109,7 @@ Electric bike usage for casual riders starts increasing from february with the h
 
 On comparison, classic and electric bike usage is similar in the month of january. Casual riders have preferred classic bike throughout the year except for october, novermber, and december. During these months electric bikes are more preferred, and I suspect the reason to be the start of winter season. Usage of all bike types by both rider is the lowest in the month of January and February which are the coldest in Chicago.
 
-Member Ride Preference
+### Member Ride Preference
 
 ![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/11b72136-9415-490d-9192-711ba724a7ca)
 <https://public.tableau.com/views/MemberRidePreference/MemberRidePreference?:language=en-GB&:display_count=n&:origin=viz_share_link>
@@ -131,7 +136,7 @@ For member riders, classic bike usage is evenly distributed between Tuesday-Satu
 
 Casual riders seem to be hiring maximum number of bikes in the evening between 4:00 P.M. - 7:00 P.M. during weekdays probably for leisure activities after office hours.
 
-Member: Weekday Peak hours
+### Member: Weekday Peak hours
 
 ![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/5ac90866-b175-4e9f-b478-3ca356236abf)
 <https://public.tableau.com/views/weekdaypeakhoursofstarttime/WeekdaysStartTime?:language=en-US&:display_count=n&:origin=viz_share_link>
@@ -141,7 +146,7 @@ Member: Weekday Peak hours
 
 Member riders are hiring maximum number of bikes during peak commute hours that is between 7:00 A.M. - 9:00 A.M. in the morning and between 4:00 P.M. - 6:00 P.M. in the evening. Also, member riders seem to be using the bikes to travel towards station since some of the peak cyclistic docking stations are near train stations.
 
-Casual: Weekends Peak Hours
+### Casual: Weekends Peak Hours
 
 ![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/7578a426-df61-4dc9-81e5-650d2de4dd5f)
 <https://public.tableau.com/views/weekendstarttimepeakhoursofcasual/WeekendStartTime2?:language=en-GB&:display_count=n&:origin=viz_share_link>
@@ -151,7 +156,7 @@ Casual: Weekends Peak Hours
 
 During weekends, casual riders hire maximum number of bikes between 12:00 P.M. - 5:00 P.M. The trend for weekends is a normal distribution unlike weekdays which was spiked during peak commute hours.
 
-Member: Weekends Peak Hours
+### Member: Weekends Peak Hours
 
 ![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/b20e635c-7c7a-462d-a9ee-7b473688e15b)
 <https://public.tableau.com/views/weekendstarttimepeakhours/WeekendStartTime?:language=en-GB&:display_count=n&:origin=viz_share_link>
@@ -164,11 +169,11 @@ Bike hiring trend for member riders on weekends is comparable to that of casual 
 To convert casual riders into annual members, marketing campaigns should be targeted towards summer when riders are more likely to patronise Cyclistic services.
 
 The marketing team should also consider reaching out to riders during the weekends, as casual riders are most likely using Cyclistic’s services for recreational services while annual members use it for their daily commute.
-
+```
 1. Design Half-Yearly and Quarter- Yearly membership plans
-1. Slash the annual membership rates from June-September when casual rider traffic is maximum
-1. Design flash sale of membership plans near top 20 busiest stations on weekends during peak hours
-
+2. Slash the annual membership rates from June-September when casual rider traffic is maximum
+3. Design flash sale of membership plans near top 20 busiest stations on weekends during peak hours
+```
 
 
 
