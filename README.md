@@ -79,11 +79,13 @@ For member riders, the number of bikes leased starts increasing from the month o
 
 It is observed that the number of rides leased by casual riders surpasses member riders in the months of june, july, and august. The reason I suspect is the increase in tourism in Chicago during this period. Also, the lowest number of rides are in the month of january for both casual and member riders, the reason might be freezing weather conditions. After carefully observing the monthly data, I found out that casual riders hire maximum number of bikes on weekends and member riders on weekdays in each month consistently. From the data it seems that member riders use the bikes for commute purposes which could be office/school/college.
 ### Ride Length
-![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/b439acce-f8b3-4ca8-aa58-6ed78179e21e)
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/46e76985-fe06-45e6-bba3-7bddd4d5e5b7)
+
 
 On average, casual riders spend approximately twice as much time on their bikes as compared to member riders, even though the number of rides leased by casual riders is 10% less than member riders.
 
-![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/749b0dae-d6cc-4930-8ebb-37ce3d730984)
+![image](https://github.com/Shaikhnuzhat/cyclistic/assets/137195311/d5d1d6cb-f0e4-4577-8fb0-a477a358ebdb)
+
 
 
 The average ride length for casual riders is comparable between february-may and starts declining further until january. It is observed that there is a significant increase in the average ride length for casual riders between january and february.
